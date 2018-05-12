@@ -20,7 +20,9 @@ namespace ASPCoreWithAngular.Models.VPlates
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Execute("spAddPlate", plate, commandType: System.Data.CommandType.StoredProcedure);
+                    connection.Execute("spAddPlate", 
+                        new{plate.Name, plate.MinCharacters, plate.MaxCharacters}, 
+                        commandType: System.Data.CommandType.StoredProcedure);
                 }
 
                 return true;

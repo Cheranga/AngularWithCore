@@ -1,0 +1,33 @@
+﻿<h1>Plate Data</h1>
+
+<p *ngIf="!plateList"><em>Loading...</em></p>
+
+<!--<p>
+    <a [routerLink]="['/register-employee']">Create New</a>
+</p>-->
+
+<table class='table' *ngIf="plateList">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Minimum Characters</th>
+        <th>Maximum Characters</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let plate of plateList">
+        <td>{{ plate.id }}</td>
+        <td>{{ plate.name }}</td>
+        <td>{{ plate.minCharacters }}</td>
+        <td>{{ plate.maxCharacters }}</td>
+        <td>
+        <td>
+            <!--<a [routerLink]="['/employee/edit/', emp.id]">Edit</a> |
+    <a [routerLink]="" (click)="delete(emp.id)">Delete</a>-->
+            <a href="#">Edit</a>
+            <a href="#">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

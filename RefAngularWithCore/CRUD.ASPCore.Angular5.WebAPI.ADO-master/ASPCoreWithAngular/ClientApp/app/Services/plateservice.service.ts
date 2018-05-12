@@ -7,39 +7,27 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
-export class EmployeeService {
+export class PlateService {
     myAppUrl: string = "";
 
     constructor(private _http: Http, @Inject('BASE_URL') baseUrl: string) {
         this.myAppUrl = baseUrl;
     }
 
-    getEmployees() {
-        return this._http.get(this.myAppUrl + 'api/Employee')
+    getPlates() {
+        return this._http.get(this.myAppUrl + 'api/Plate')
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }
 
-    getEmployeeById(id: number) {
-        return this._http.get(this.myAppUrl + "api/Employee/Details/" + id)
+    savePlate(plate) {
+        return this._http.post(this.myAppUrl + 'api/Plate/Create', plate)
             .map((response: Response) => response.json())
             .catch(this.errorHandler)
     }
 
-    saveEmployee(employee) {
-        return this._http.post(this.myAppUrl + 'api/Employee/Create', employee)
-            .map((response: Response) => response.json())
-            .catch(this.errorHandler)
-    }
-
-    updateEmployee(employee) {
-        return this._http.put(this.myAppUrl + 'api/Employee/Edit', employee)
-            .map((response: Response) => response.json())
-            .catch(this.errorHandler);
-    }
-
-    deleteEmployee(id) {
-        return this._http.delete(this.myAppUrl + "api/Employee/Delete/" + id)
+    deletePlate(id) {
+        return this._http.delete(this.myAppUrl + "api/Plate/Delete/" + id)
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }

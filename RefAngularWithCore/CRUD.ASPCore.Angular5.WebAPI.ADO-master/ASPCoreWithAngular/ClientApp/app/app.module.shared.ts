@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { EmployeeService } from './services/empservice.service'
+import { PlateService } from "./Services/plateservice.service"
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -10,6 +11,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchEmployeeComponent } from './components/fetchemployee/fetchemployee.component'
 import { createemployee } from './components/addemployee/AddEmployee.component'
+import { PlateListComponent } from "./components/platelist/platelist.component"
+
 
 @NgModule({
     declarations: [
@@ -18,6 +21,7 @@ import { createemployee } from './components/addemployee/AddEmployee.component'
         HomeComponent,
         FetchEmployeeComponent,
         createemployee,
+        PlateListComponent
     ],
     imports: [
         CommonModule,
@@ -30,10 +34,14 @@ import { createemployee } from './components/addemployee/AddEmployee.component'
             { path: 'fetch-employee', component: FetchEmployeeComponent },
             { path: 'register-employee', component: createemployee },
             { path: 'employee/edit/:id', component: createemployee },
+            { path: 'plate-list', component: PlateListComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers: [EmployeeService]
+    providers: [
+        EmployeeService,
+        PlateService
+    ]
 })
 export class AppModuleShared {
 }
