@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AngularWithCore.Controllers
 {
-    [Route("api/{controller}")]
+    [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
         private readonly EmployeeDataAccessLayer _dataAccess;
@@ -43,12 +43,7 @@ namespace AngularWithCore.Controllers
             }
 
             var result = _dataAccess.AddEmployee(employee);
-            if (result > 0)
-            {
-                return Ok();
-            }
-
-            return StatusCode((int)HttpStatusCode.)
+            return Ok(result);
         }
 
     }
