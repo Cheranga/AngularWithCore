@@ -17,7 +17,8 @@ namespace ASPCoreWithAngular.Controllers
         [Route("api/Employee/Index")]
         public IEnumerable<Employee> Index()
         {
-            return objemployee.GetAllEmployees();
+            var results = objemployee.GetAllEmployees();
+            return results;
         }
 
         [HttpPost]
