@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using Dapper;
 
 namespace ASPCoreWithAngular.Models.VPlates
@@ -9,30 +10,30 @@ namespace ASPCoreWithAngular.Models.VPlates
     {
         const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Database=EmployeeDbDev;Trusted_Connection=True;MultipleActiveResultSets=true";//"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=myTestDB;Data Source=ANKIT-HP\\SQLEXPRESS";
 
-        public bool AddPlate(Plate plate)
+        public int AddPlate(Plate plate)
         {
             if(plate == null)
             {
-                return false;
+                return 0;
             }
 
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Execute("spAddPlate", 
+                    var insertedPlate = connection.QuerySingle<Plate>("spAddPlate", 
                         new{plate.Name, plate.MinCharacters, plate.MaxCharacters}, 
                         commandType: System.Data.CommandType.StoredProcedure);
-                }
 
-                return true;
+                    return insertedPlate.Id;
+                }
             }
             catch(Exception ex)
             {
 
             }
 
-            return false;
+            return -1;
         }
 
         public bool DeletePlate(int id)

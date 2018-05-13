@@ -6,7 +6,7 @@ namespace ASPCoreWithAngular.Models.VPlates
     {
         Plate GetPlate(int id);
         IEnumerable<Plate> GetAll();
-        bool AddPlate(Plate plate);
+        int AddPlate(Plate plate);
         bool DeletePlate(int id);
     }
 }

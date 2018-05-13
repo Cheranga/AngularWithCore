@@ -22,7 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\VPlates\MockedPlateRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\app\components\addemployee\AddEmployee.component.ts" />
+    <None Remove="ClientApp\app\components\addplate\addplate.component.ts" />
     <None Remove="ClientApp\app\components\fetchemployee\fetchemployee.component.ts" />
     <None Remove="ClientApp\app\components\platelist\platelist.component.ts" />
     <None Remove="ClientApp\app\Services\empservice.service.ts" />
@@ -31,6 +36,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\addemployee\AddEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\addplate\addplate.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\fetchemployee\fetchemployee.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\platelist\platelist.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\Services\empservice.service.ts" />

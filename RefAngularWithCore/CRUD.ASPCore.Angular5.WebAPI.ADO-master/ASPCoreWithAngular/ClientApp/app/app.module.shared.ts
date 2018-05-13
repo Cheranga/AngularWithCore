@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchEmployeeComponent } from './components/fetchemployee/fetchemployee.component'
 import { createemployee } from './components/addemployee/AddEmployee.component'
 import { PlateListComponent } from "./components/platelist/platelist.component"
+import { AddPlateComponent } from "./components/addplate/addplate.component"
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PlateListComponent } from "./components/platelist/platelist.component"
         HomeComponent,
         FetchEmployeeComponent,
         createemployee,
-        PlateListComponent
+        PlateListComponent,
+        AddPlateComponent
     ],
     imports: [
         CommonModule,
@@ -35,6 +37,7 @@ import { PlateListComponent } from "./components/platelist/platelist.component"
             { path: 'register-employee', component: createemployee },
             { path: 'employee/edit/:id', component: createemployee },
             { path: 'plate-list', component: PlateListComponent },
+            { path: 'addplate', component: AddPlateComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],

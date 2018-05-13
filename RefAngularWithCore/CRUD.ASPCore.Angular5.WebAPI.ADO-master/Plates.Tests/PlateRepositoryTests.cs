@@ -12,13 +12,13 @@ namespace Plates.Tests
             var repository = new PlateRepository();
             var plate = new Plate
             {
-                Name = "3 X 3",
+                Name = "Test Plate 4",
                 MinCharacters = 3,
                 MaxCharacters = 6
             };
 
-            var status = repository.AddPlate(plate);
-            Assert.True(status);
+            var identity = repository.AddPlate(plate);
+            Assert.True(identity > 0);
         }
 
         [Fact]
