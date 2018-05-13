@@ -12,7 +12,7 @@ namespace ASPCoreWithAngular.Models.VPlates
     {
         const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Database=EmployeeDbDev;Trusted_Connection=True;MultipleActiveResultSets=true";//"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=myTestDB;Data Source=ANKIT-HP\\SQLEXPRESS";
 
-        public bool AddPlatePattern(PlatePattern platePattern)
+        public bool AddPlatePattern(PlaterPatternDataModel platePattern)
         {
             if (platePattern == null)
             {
@@ -23,9 +23,7 @@ namespace ASPCoreWithAngular.Models.VPlates
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Execute("spAddPlatePattern", 
-                        new {platePattern.Name, Pattern = platePattern.GetFormat()}, 
-                        commandType: CommandType.StoredProcedure);
+                    connection.Execute("spAddPlatePattern", platePattern, commandType: CommandType.StoredProcedure);
                 }
 
                 return true;
@@ -49,8 +47,8 @@ namespace ASPCoreWithAngular.Models.VPlates
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Execute("spUpdatePlatePattern", 
-                        new { platePattern.Id, platePattern.Name, Pattern = platePattern.GetFormat() }, 
+                    connection.Execute("spUpdatePlatePattern",
+                        new { platePattern.Id, platePattern.Name, Pattern = platePattern.GetFormat() },
                         commandType: CommandType.StoredProcedure);
                 }
 
@@ -64,21 +62,21 @@ namespace ASPCoreWithAngular.Models.VPlates
             return false;
         }
 
-        public IEnumerable<PlatePattern> GetPlatePatterns(int plateId)
+        public IEnumerable<PlaterPatternDataModel> GetPlatePatterns(int plateId)
         {
             if (plateId <= 0)
             {
-                return Enumerable.Empty<PlatePattern>();
+                return Enumerable.Empty<PlaterPatternDataModel>();
             }
 
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var patterns = connection.Query<PlatePattern>("select * from PlatePattern");
+                var patterns = connection.Query<PlaterPatternDataModel>($"select * from PlatePattern where [PlateId]={plateId}");
                 return patterns;
             }
         }
 
-        public PlatePattern GetPlatePattern(int plateId, int platePatternId)
+        public PlaterPatternDataModel GetPlatePattern(int plateId, int platePatternId)
         {
             if (plateId <= 0 || platePatternId <= 0)
             {
@@ -87,7 +85,7 @@ namespace ASPCoreWithAngular.Models.VPlates
 
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var pattern = connection.QueryFirst<PlatePattern>("spGetPlatePattern", new{id=platePatternId, plateId=plateId});
+                var pattern = connection.QueryFirst<PlaterPatternDataModel>("spGetPlatePattern", new { id = platePatternId, plateId = plateId });
                 return pattern;
             }
 

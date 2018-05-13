@@ -44,20 +44,20 @@ namespace ASPCoreWithAngular.Controllers
                 return NotFound();
             }
 
-            var currentPatterns = new List<PlatePattern>(_platePatternRepository.GetPlatePatterns(id));
-            
+            var currentPatterns = new List<PlaterPatternDataModel>(_platePatternRepository.GetPlatePatterns(id));
+
             var platePatterns = new
             {
                 currentPlate.Id,
                 currentPlate.Name,
                 currentPlate.MinCharacters,
                 currentPlate.MaxCharacters,
-                Patterns = currentPatterns.Select(y => new { y.Name, pattern = y.GetFormat() })
+                Patterns = currentPatterns.Select(y => new { y.Name, y.Pattern })
             };
 
             return Ok(platePatterns);
         }
-        
+
 
         [HttpPost("Create")]
         public IActionResult CreatePlate([FromBody] Plate plate)
@@ -65,6 +65,30 @@ namespace ASPCoreWithAngular.Controllers
             if (ModelState.IsValid)
             {
                 var status = _plateRepository.AddPlate(plate);
+                return Ok(status);
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPost("patterns/create")]
+        public IActionResult CreatePlatePattern([FromBody] PlatePattern platePattern)
+        {
+            if (ModelState.IsValid)
+            {
+                if (platePattern.Characters == null)
+                {
+                    return BadRequest();
+                }
+
+                var platePatternDataModel = new PlaterPatternDataModel
+                {
+                    PlateId = platePattern.PlateId,
+                    Name = platePattern.Name,
+                    Pattern = platePattern.GetFormat()
+                };
+
+                var status = _platePatternRepository.AddPlatePattern(platePatternDataModel);
                 return Ok(status);
             }
 

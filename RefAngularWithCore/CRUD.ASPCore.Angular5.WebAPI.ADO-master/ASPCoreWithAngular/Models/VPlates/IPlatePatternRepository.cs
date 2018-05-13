@@ -4,9 +4,9 @@ namespace ASPCoreWithAngular.Models.VPlates
 {
     public interface IPlatePatternRepository
     {
-        bool AddPlatePattern(PlatePattern platePattern);
+        bool AddPlatePattern(PlaterPatternDataModel platePattern);
         bool EditPlatePattern(PlatePattern platePattern);
-        IEnumerable<PlatePattern> GetPlatePatterns(int plateId);
-        PlatePattern GetPlatePattern(int plateId, int platePatternId);
+        IEnumerable<PlaterPatternDataModel> GetPlatePatterns(int plateId);
+        PlaterPatternDataModel GetPlatePattern(int plateId, int platePatternId);
     }
 }

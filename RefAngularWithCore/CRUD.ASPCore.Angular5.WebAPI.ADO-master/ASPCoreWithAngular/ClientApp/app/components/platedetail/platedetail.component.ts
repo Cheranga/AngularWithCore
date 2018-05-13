@@ -8,10 +8,10 @@ import { PlateService } from "../../Services/plateservice.service";
     templateUrl: './platedetail.component.html'
 })
 
-export class PlateDetailComponent{
+export class PlateDetailComponent {
     public plateDetail: IPlateDetailData;
 
-    constructor(public http: Http, private _router: Router, private _avRoute:ActivatedRoute,
+    constructor(public http: Http, private _router: Router, private _avRoute: ActivatedRoute,
         private _plateService: PlateService) {
         if (this._avRoute.snapshot.params["id"]) {
             this.getPlate(this._avRoute.snapshot.params["id"]);
@@ -21,7 +21,7 @@ export class PlateDetailComponent{
     getPlate(plateId) {
         this._plateService.getPlate(plateId).subscribe(
             data => this.plateDetail = data
-        )
+        );
     }
 }
 
@@ -30,10 +30,10 @@ interface IPlateDetailData {
     name: string;
     minCharacters: number;
     maxCharacters: number;
-    patterns:IPlaterPatternData[];
+    patterns: IPlaterPatternDisplayData[];
 }
 
-interface IPlaterPatternData {
+interface IPlaterPatternDisplayData {
     name: string;
-    pattern:string;
+    pattern: string;
 }

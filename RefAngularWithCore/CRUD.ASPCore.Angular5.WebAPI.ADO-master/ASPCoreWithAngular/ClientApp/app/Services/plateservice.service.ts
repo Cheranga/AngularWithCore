@@ -29,7 +29,13 @@ export class PlateService {
     savePlate(plate) {
         return this._http.post(this.myAppUrl + 'api/Plate/Create', plate)
             .map((response: Response) => response.json())
-            .catch(this.errorHandler)
+            .catch(this.errorHandler);
+    }
+
+    savePlatePattern(platePattern) {
+        return this._http.post(this.myAppUrl + 'api/plate/patterns/create', platePattern)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
     }
 
     deletePlate(id) {

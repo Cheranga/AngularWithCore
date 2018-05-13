@@ -1,10 +1,10 @@
-﻿<h1>Plate Details</h1>
-
-<p>This component demonstrates fetching Employee data from the server.</p>
-
-<p *ngIf="!plateDetail"><em>Loading...</em></p>
+﻿<p *ngIf="!plateDetail"><em>Loading...</em></p>
 
 <div *ngIf="plateDetail">
+    <h1>{{plateDetail.name}} - Plate Details</h1>
+    <p>
+        <a [routerLink]="['/plate-list']">Back to Plates</a>
+    </p>
     <form class="form-horizontal">
         <div class="form-group">
             <label class=" control-label col-md-2">Name</label>
@@ -25,30 +25,31 @@
             </div>
         </div>
     </form>
-
+    
+    <h3>Patterns</h3>
     <p>
-        <a href="#">Create New Pattern</a>
+        <a [routerLink]="['/patterns', plateDetail.id,0]" [queryParams]="{min:plateDetail.minCharacters, max:plateDetail.maxCharacters}">Create Pattern</a>
     </p>
 
     <table class='table' *ngIf="plateDetail.patterns">
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Pattern</th>
-            <th>&nbsp;</th>
-        </tr>
+            <tr>
+                <th>Name</th>
+                <th>Pattern</th>
+                <th>&nbsp;</th>
+            </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let pattern of plateDetail.patterns">
-            <td>{{ pattern.name }}</td>
-            <td>{{ pattern.pattern }}</td>
-            <td>
-                <!--<a [routerLink]="['/employee/edit/', emp.id]">Edit</a> |
-                <a [routerLink]="" (click)="delete(emp.id)">Delete</a>-->
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
-            </td>
-        </tr>
+            <tr *ngFor="let pattern of plateDetail.patterns">
+                <td>{{ pattern.name }}</td>
+                <td>{{ pattern.pattern }}</td>
+                <td>
+                    <!--<a [routerLink]="['/employee/edit/', emp.id]">Edit</a> |
+                    <a [routerLink]="" (click)="delete(emp.id)">Delete</a>-->
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

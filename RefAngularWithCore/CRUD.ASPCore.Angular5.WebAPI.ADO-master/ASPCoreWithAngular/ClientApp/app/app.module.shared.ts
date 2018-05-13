@@ -14,6 +14,7 @@ import { createemployee } from './components/addemployee/AddEmployee.component'
 import { PlateListComponent } from "./components/platelist/platelist.component"
 import { AddPlateComponent } from "./components/addplate/addplate.component"
 import { PlateDetailComponent } from "./components/platedetail/platedetail.component"
+import { AddPatternComponent } from "./components/addpattern/addpattern.component"
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PlateDetailComponent } from "./components/platedetail/platedetail.compo
         createemployee,
         PlateListComponent,
         AddPlateComponent,
-        PlateDetailComponent
+        PlateDetailComponent,
+        AddPatternComponent
     ],
     imports: [
         CommonModule,
@@ -41,6 +43,7 @@ import { PlateDetailComponent } from "./components/platedetail/platedetail.compo
             { path: 'plate-list', component: PlateListComponent },
             { path: 'addplate', component: AddPlateComponent },
             { path: 'plate/patterns/:id', component: PlateDetailComponent },
+            { path: 'patterns/:id/:patternId', component: AddPatternComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
