@@ -68,7 +68,7 @@ namespace ASPCoreWithAngular.Models.VPlates
         {
             if (plateId <= 0)
             {
-                return null;
+                return Enumerable.Empty<PlatePattern>();
             }
 
             using (var connection = new SqlConnection(ConnectionString))
@@ -76,8 +76,6 @@ namespace ASPCoreWithAngular.Models.VPlates
                 var patterns = connection.Query<PlatePattern>("select * from PlatePattern");
                 return patterns;
             }
-
-            return null;
         }
 
         public PlatePattern GetPlatePattern(int plateId, int platePatternId)

@@ -20,6 +20,12 @@ export class PlateService {
             .catch(this.errorHandler);
     }
 
+    getPlate(plateId) {
+        return this._http.get(this.myAppUrl + 'api/Plate/Patterns/' + plateId)
+            .map((response: Response) => response.json())
+            .catch(this.errorHandler);
+    }
+
     savePlate(plate) {
         return this._http.post(this.myAppUrl + 'api/Plate/Create', plate)
             .map((response: Response) => response.json())

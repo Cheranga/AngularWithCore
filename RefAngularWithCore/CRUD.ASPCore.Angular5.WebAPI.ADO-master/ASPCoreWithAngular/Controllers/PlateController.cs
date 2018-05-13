@@ -12,10 +12,12 @@ namespace ASPCoreWithAngular.Controllers
     public class PlateController : Controller
     {
         private readonly IPlateRepository _plateRepository;
+        private readonly IPlatePatternRepository _platePatternRepository;
 
-        public PlateController(IPlateRepository plateRepository)
+        public PlateController(IPlateRepository plateRepository, IPlatePatternRepository platePatternRepository)
         {
             _plateRepository = plateRepository;
+            _platePatternRepository = platePatternRepository;
         }
 
         [HttpGet]
@@ -24,6 +26,38 @@ namespace ASPCoreWithAngular.Controllers
             var plates = _plateRepository.GetAll();
             return Ok(plates);
         }
+
+        [HttpGet("patterns/{id}")]
+        public IActionResult GetPlatePatterns(int id)
+        {
+            if (id <= 0)
+            {
+                return NotFound();
+            }
+
+            //
+            // TODO: Remove these 2 queries and combine them to one
+            //
+            var currentPlate = _plateRepository.GetPlate(id);
+            if (currentPlate == null)
+            {
+                return NotFound();
+            }
+
+            var currentPatterns = new List<PlatePattern>(_platePatternRepository.GetPlatePatterns(id));
+            
+            var platePatterns = new
+            {
+                currentPlate.Id,
+                currentPlate.Name,
+                currentPlate.MinCharacters,
+                currentPlate.MaxCharacters,
+                Patterns = currentPatterns.Select(y => new { y.Name, pattern = y.GetFormat() })
+            };
+
+            return Ok(platePatterns);
+        }
+        
 
         [HttpPost("Create")]
         public IActionResult CreatePlate([FromBody] Plate plate)
@@ -45,3 +79,4 @@ namespace ASPCoreWithAngular.Controllers
         }
     }
 }
+

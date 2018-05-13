@@ -24,6 +24,7 @@ namespace ASPCoreWithAngular
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPlateRepository, PlateRepository>();
+            services.AddScoped<IPlatePatternRepository, PlatePatternRepository>();
             services.AddMvc();
         }
 

@@ -8,26 +8,24 @@
 
 <table class='table' *ngIf="plateList">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Minimum Characters</th>
-        <th>Maximum Characters</th>
-    </tr>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Minimum Characters</th>
+            <th>Maximum Characters</th>
+        </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let plate of plateList">
-        <td>{{ plate.id }}</td>
-        <td>{{ plate.name }}</td>
-        <td>{{ plate.minCharacters }}</td>
-        <td>{{ plate.maxCharacters }}</td>
-        <td>
-        <td>
-            <!--<a [routerLink]="['/employee/edit/', emp.id]">Edit</a> |
-    <a [routerLink]="" (click)="delete(emp.id)">Delete</a>-->
-            <a href="#">Edit</a>
-            <a [routerLink]="" (click)="delete(plate.id)">Delete</a>
-        </td>
-    </tr>
+        <tr *ngFor="let plate of plateList">
+            <td>{{ plate.id }}</td>
+            <td>{{ plate.name }}</td>
+            <td>{{ plate.minCharacters }}</td>
+            <td>{{ plate.maxCharacters }}</td>
+            <td>
+            <td>
+                <a [routerLink]="['/plate/patterns/', plate.id]">Edit</a> |
+                <a [routerLink]="" (click)="delete(plate.id)">Delete</a>
+            </td>
+        </tr>
     </tbody>
 </table>
