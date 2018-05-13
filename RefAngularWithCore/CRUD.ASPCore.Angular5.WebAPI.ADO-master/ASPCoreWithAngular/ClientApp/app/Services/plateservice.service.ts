@@ -27,7 +27,7 @@ export class PlateService {
     }
 
     deletePlate(id) {
-        return this._http.delete(this.myAppUrl + "api/Plate/Delete/" + id)
+        return this._http.delete(this.myAppUrl + "api/Plate/" + id)
             .map((response: Response) => response.json())
             .catch(this.errorHandler);
     }

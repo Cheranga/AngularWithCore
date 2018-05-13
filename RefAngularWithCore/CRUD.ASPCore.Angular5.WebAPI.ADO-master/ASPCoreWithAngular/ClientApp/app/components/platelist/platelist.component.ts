@@ -20,6 +20,15 @@ export class PlateListComponent {
             data => this.plateList = data
         )
     }
+
+    delete(plateId) {
+        var ans = confirm("Do you want to delete this plate?");
+        if (ans) {
+            this._plateService.deletePlate(plateId).subscribe((data) => {
+                this.getPlates();
+            }, error => console.error(error))
+        }
+    }
 }
 
 interface PlateData {

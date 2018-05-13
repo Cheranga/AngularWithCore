@@ -38,7 +38,7 @@ namespace ASPCoreWithAngular.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{id}")]
+        [Route("{id}")]
         public IActionResult Delete(int id)
         {
             return Ok(_plateRepository.DeletePlate(id));
