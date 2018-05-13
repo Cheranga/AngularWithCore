@@ -1,0 +1,75 @@
+﻿<p *ngIf="!plateDetail"><em>Loading...</em></p>
+
+<div *ngIf="plateDetail" class="panel-margins">
+    <p>
+        <a [routerLink]="['/plate-list']" class="btn btn-sm btn-warning">
+            <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>&nbsp;Plates
+        </a>
+    </p>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Details</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class=" control-label col-md-2">Name</label>
+                    <div class="col-md-10">
+                        <label class=" control-label">{{plateDetail.name}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class=" control-label col-md-2">Min Characters</label>
+                    <div class="col-md-10">
+                        <label class=" control-label">{{plateDetail.minCharacters}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class=" control-label col-md-2">Max Characters</label>
+                    <div class="col-md-10">
+                        <label class=" control-label">{{plateDetail.maxCharacters}}</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Patterns</h3>
+        </div>
+        <div class="panel-body">
+            <p>
+                <a class="btn btn-sm btn-primary" [routerLink]="['/patterns', plateDetail.id,0]" [queryParams]="{min:plateDetail.minCharacters, max:plateDetail.maxCharacters}">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;Create
+                </a>
+            </p>
+
+            <table class='table' *ngIf="plateDetail.patterns">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Pattern</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pattern of plateDetail.patterns">
+                        <td>{{ pattern.name }}</td>
+                        <td>{{ pattern.pattern }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning">
+                                <span class="glyphicon glyphicon-cog"></span>&nbsp;Edit
+                            </a>
+                            <a class="btn btn-sm btn-danger">
+                                <span class="glyphicon glyphicon-remove"></span>&nbsp;Delete
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,45 @@
+﻿
+
+<p *ngIf="!plateList"><em>Loading...</em></p>
+
+<div *ngIf="plateList" class="panel panel-default panel-margins">
+    <div class="panel-heading">
+        <h3 class="panel-title">Available Plates</h3>
+    </div>
+    <div class="panel-body">
+        <p>
+            <a [routerLink]="['/addplate']" class="btn btn-sm btn-primary">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create
+            </a>
+        </p>
+        <table class='table table-condensed table-responsive' *ngIf="plateList">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Minimum Characters</th>
+                    <th>Maximum Characters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plate of plateList">
+                    <td>{{ plate.id }}</td>
+                    <td>{{ plate.name }}</td>
+                    <td>{{ plate.minCharacters }}</td>
+                    <td>{{ plate.maxCharacters }}</td>
+                    <td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" [routerLink]="['/plate/patterns/', plate.id]">
+                            <span class="glyphicon glyphicon-cog"></span>&nbsp;Edit
+                        </a>
+                        <a class="btn btn-sm btn-danger" [routerLink]="" (click)="delete(plate.id)">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

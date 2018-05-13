@@ -9,44 +9,44 @@ using ASPCoreWithAngular.Models;
 
 namespace ASPCoreWithAngular.Controllers
 {
+    [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
         EmployeeDataAccessLayer objemployee = new EmployeeDataAccessLayer();
 
-        [HttpGet("[action]")]
-        [Route("api/Employee/Index")]
-        public IEnumerable<Employee> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
             var results = objemployee.GetAllEmployees();
-            return results;
+            return Ok(results);
         }
 
         [HttpPost]
-        [Route("api/Employee/Create")]
-        public int Create([FromBody] Employee employee)
+        [Route("Create")]
+        public IActionResult Create([FromBody] Employee employee)
         {
-            return objemployee.AddEmployee(employee);
+            return Ok(objemployee.AddEmployee(employee));
         }
 
         [HttpGet]
-        [Route("api/Employee/Details/{id}")]
-        public Employee Details(int id)
+        [Route("Details/{id}")]
+        public IActionResult Details(int id)
         {
-            return objemployee.GetEmployeeData(id);
+            return Ok(objemployee.GetEmployeeData(id));
         }
 
         [HttpPut]
-        [Route("api/Employee/Edit")]
-        public int Edit([FromBody]Employee employee)
+        [Route("Edit")]
+        public IActionResult Edit([FromBody]Employee employee)
         {
-            return objemployee.UpdateEmployee(employee);
+            return Ok(objemployee.UpdateEmployee(employee));
         }
 
         [HttpDelete]
-        [Route("api/Employee/Delete/{id}")]
-        public int Delete(int id)
+        [Route("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            return objemployee.DeleteEmployee(id);
+            return Ok(objemployee.DeleteEmployee(id));
         }
     }
 }
