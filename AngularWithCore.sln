@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWithCore", "AngularWithCore\AngularWithCore.csproj", "{2BF70EDA-1AB2-4312-AA8A-01940AE4E335}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Tests", "DataAccess.Tests\DataAccess.Tests.csproj", "{4A3628E7-4546-4B14-B1F0-26E83338F6D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2BF70EDA-1AB2-4312-AA8A-01940AE4E335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BF70EDA-1AB2-4312-AA8A-01940AE4E335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BF70EDA-1AB2-4312-AA8A-01940AE4E335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3628E7-4546-4B14-B1F0-26E83338F6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3628E7-4546-4B14-B1F0-26E83338F6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3628E7-4546-4B14-B1F0-26E83338F6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3628E7-4546-4B14-B1F0-26E83338F6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

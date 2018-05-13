@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AngularWithCore.Models;
+using ASPCoreWithAngular.Models.VPlates;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AngularWithCore
+namespace ASPCoreWithAngular
 {
     public class Startup
     {
@@ -23,8 +23,8 @@ namespace AngularWithCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<EmployeeDataAccessLayer, EmployeeDataAccessLayer>();
-
+            services.AddScoped<IPlateRepository, PlateRepository>();
+            services.AddScoped<IPlatePatternRepository, PlatePatternRepository>();
             services.AddMvc();
         }
 

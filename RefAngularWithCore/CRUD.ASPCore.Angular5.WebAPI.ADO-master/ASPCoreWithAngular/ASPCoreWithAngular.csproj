@@ -9,16 +9,42 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.4" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
     <Content Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\VPlates\MockedPlateRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\app\components\addemployee\AddEmployee.component.ts" />
+    <None Remove="ClientApp\app\components\addpattern\addpattern.component.ts" />
+    <None Remove="ClientApp\app\components\addplate\addplate.component.ts" />
+    <None Remove="ClientApp\app\components\fetchemployee\fetchemployee.component.ts" />
+    <None Remove="ClientApp\app\components\platedetail\platedetail.component.ts" />
+    <None Remove="ClientApp\app\components\platelist\platelist.component.ts" />
+    <None Remove="ClientApp\app\Services\empservice.service.ts" />
+    <None Remove="ClientApp\app\Services\plateservice.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\addemployee\AddEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\addpattern\addpattern.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\addplate\addplate.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\fetchemployee\fetchemployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\platedetail\platedetail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\platelist\platelist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Services\empservice.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Services\plateservice.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
