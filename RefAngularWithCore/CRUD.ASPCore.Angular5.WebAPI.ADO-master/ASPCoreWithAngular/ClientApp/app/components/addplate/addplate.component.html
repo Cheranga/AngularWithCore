@@ -1,47 +1,45 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    <h1>{{title}}</h1>
-    <h3>Plate</h3>
-    <hr />
-    <form [formGroup]="plateForm" (ngSubmit)="save()" #formDir="ngForm" novalidate class="form-horizontal">
-        <div class="form-group">
-            <label class=" control-label col-sm-2" for="Name">Name</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" formControlName="name">
-                <span class="text-danger" *ngIf="plateForm.hasError('required', 'name') && formDir.submitted">
-                    Please enter plate name
-                </span>
+﻿<p *ngIf="!plateForm"><em>Loading...</em></p>
+<div *ngIf="plateForm" class="panel panel-default panel-margins">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{title}} Plate</h3>
+    </div>
+    <div class="panel-body">
+        <form [formGroup]="plateForm" (ngSubmit)="save()" #formDir="ngForm" novalidate class="form-horizontal">
+            <div class="form-group">
+                <label class=" control-label col-sm-2" for="Name">Name</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" formControlName="name">
+                    <span class="text-danger" *ngIf="plateForm.hasError('required', 'name') && formDir.submitted">
+                        Please enter plate name
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="MinCharacters">Min Characters</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" formControlName="minCharacters">
-                <span class="text-danger" *ngIf="plateForm.hasError('required', 'minCharacters') && formDir.submitted">
-                    Please enter minimum characters allowed.
-                </span>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="MinCharacters">Min Characters</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" formControlName="minCharacters">
+                    <span class="text-danger" *ngIf="plateForm.hasError('required', 'minCharacters') && formDir.submitted">
+                        Please enter minimum characters allowed.
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="MaxCharacters">Max Characters</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" formControlName="maxCharacters">
-                <span class="text-danger" *ngIf="plateForm.hasError('required', 'maxCharacters') && formDir.submitted">
-                    Please enter maximum characters allowed.
-                </span>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="MaxCharacters">Max Characters</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" formControlName="maxCharacters">
+                    <span class="text-danger" *ngIf="plateForm.hasError('required', 'maxCharacters') && formDir.submitted">
+                        Please enter maximum characters allowed.
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <button class="btn" (click)="cancel()">Cancel</button>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    <button class="btn btn-sm btn-warning" (click)="cancel()">Cancel</button>
+                </div>
             </div>
-        </div>
-    </form>
-</body>
-</html>
+        </form>
+
+    </div>
+</div>
+
