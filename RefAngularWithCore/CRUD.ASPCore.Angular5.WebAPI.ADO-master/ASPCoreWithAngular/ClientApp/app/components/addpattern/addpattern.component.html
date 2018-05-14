@@ -1,73 +1,71 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    <h1>{{title}}</h1>
-    <hr />
-
-    <form (ngSubmit)="save()" #formDir="ngForm" novalidate>
-        <div class="form-group">
-            <label for="patternName">Name</label>
-            <input class="form-control" type="text" [(ngModel)]="patternName" name="patternName">
-        </div>
-        <table class='table' *ngIf="patternDataList">
-            <thead>
-                <tr>
-                    <th>Character Type</th>
-                    <th>Include</th>
-                    <th>Exclude</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let pattern of patternDataList">
-                    <td>
-                        <div class="form-group">
-                            <div>
-                                <select class="form-control" data-val="true" [(ngModel)]="pattern.characterType" name="characterType">
-                                    <option value=-1>-- Select --</option>
-                                    <option value=0>Character</option>
-                                    <option value=1>Number</option>
-                                </select>
-                                <!--<span class="text-danger" *ngIf="addPatternForm.hasError('required', 'characterType') && formDir.submitted">
-                                    Character type is required
-                                </span>-->
+﻿
+<div class="panel panel-primary panel-margins">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">
+        <form (ngSubmit)="save()" #formDir="ngForm" novalidate>
+            <div class="form-group">
+                <label for="patternName">Name</label>
+                <input class="form-control" type="text" [(ngModel)]="patternName" name="patternName">
+            </div>
+            <table class='table' *ngIf="patternDataList">
+                <thead>
+                    <tr>
+                        <th>Character Type</th>
+                        <th>Include</th>
+                        <th>Exclude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pattern of patternDataList">
+                        <td>
+                            <div class="form-group">
+                                <div>
+                                    <select class="form-control" data-val="true" [(ngModel)]="pattern.characterType" name="characterType">
+                                        <option value=-1>-- Select --</option>
+                                        <option value=0>Character</option>
+                                        <option value=1>Number</option>
+                                    </select>
+                                    <!--<span class="text-danger" *ngIf="addPatternForm.hasError('required', 'characterType') && formDir.submitted">
+                                        Character type is required
+                                    </span>-->
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <div>
-                                <input class="form-control" type="text" [(ngModel)]="pattern.include" name="include">
-                                <!--<span class="text-danger" *ngIf="addPatternForm.hasError('required', 'name') && formDir.submitted">
-                                    Name is required.
-                                </span>-->
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="pattern.include" name="include">
+                                    <!--<span class="text-danger" *ngIf="addPatternForm.hasError('required', 'name') && formDir.submitted">
+                                        Name is required.
+                                    </span>-->
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <div>
-                                <input class="form-control" type="text" [(ngModel)]="pattern.exclude" name="exclude">
-                                <!--<span class="text-danger" *ngIf="addPatternForm.hasError('required', 'name') && formDir.submitted">
-                                    Name is required.
-                                </span>-->
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <div>
+                                    <input class="form-control" type="text" [(ngModel)]="pattern.exclude" name="exclude">
+                                    <!--<span class="text-danger" *ngIf="addPatternForm.hasError('required', 'name') && formDir.submitted">
+                                        Name is required.
+                                    </span>-->
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="form-group pull-right">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group pull-right">
 
-            <button type="submit" class="btn btn-default">Save</button>
-            <!--<a class="btn btn-primary" [routerLink]="['/plate/patterns', id]">Create Pattern</a> |-->
-            <a class="btn btn-primary" [routerLink]="['/plate/patterns', id]">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <!--<a class="btn btn-primary" [routerLink]="['/plate/patterns', id]">Create Pattern</a> |-->
+                <a class="btn btn-primary btn-warning" [routerLink]="['/plate/patterns', id]">Cancel</a>
 
-        </div>
+            </div>
 
-    </form>
-</body>
-</html>
+        </form>
+
+    </div>
+</div>
+

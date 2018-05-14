@@ -10,7 +10,7 @@ namespace ASPCoreWithAngular.Models.VPlates
 {
     public class PlatePatternRepository : IPlatePatternRepository
     {
-        const string ConnectionString = @"Server=(localdb)\MSSQLLocalDB;Database=EmployeeDbDev;Trusted_Connection=True;MultipleActiveResultSets=true";//"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=myTestDB;Data Source=ANKIT-HP\\SQLEXPRESS";
+        const string ConnectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
 
         public bool AddPlatePattern(PlaterPatternDataModel platePattern)
         {

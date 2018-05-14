@@ -10,7 +10,8 @@ namespace ASPCoreWithAngular.Models
 {
     public class EmployeeDataAccessLayer
     {
-        string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=EmployeeDbDev;Trusted_Connection=True;MultipleActiveResultSets=true";//"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=myTestDB;Data Source=ANKIT-HP\\SQLEXPRESS";
+        
+        string connectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
 
         //To View all employees details
         public IEnumerable<Employee> GetAllEmployees()

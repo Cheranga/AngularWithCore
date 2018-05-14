@@ -33,7 +33,7 @@ export class AddPatternComponent {
             this.patternId = this._avRoute.snapshot.params["patternId"];
         }
 
-        this.title = this.id > 0 ? "Edit Pattern" : "Create Pattern";
+        this.title = this.patternId > 0 ? "Edit Pattern" : "Create Pattern";
 
         this.sub = this._avRoute.queryParams.subscribe(params => {
             this.min = +params['min'] || 0;
