@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\addemployee\AddEmployee.component.ts" />
+    <None Remove="ClientApp\app\components\addpatternnew\addpatternnew.component.ts" />
     <None Remove="ClientApp\app\components\addpattern\addpattern.component.ts" />
     <None Remove="ClientApp\app\components\addplate\addplate.component.ts" />
     <None Remove="ClientApp\app\components\fetchemployee\fetchemployee.component.ts" />
@@ -38,6 +39,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\addemployee\AddEmployee.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\addpatternnew\addpatternnew.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\addpattern\addpattern.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\addplate\addplate.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\fetchemployee\fetchemployee.component.ts" />
