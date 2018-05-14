@@ -1,6 +1,6 @@
 ﻿namespace ASPCoreWithAngular.Models.VPlates
 {
-    public class PlaterPatternDataModel
+    public class PlatePatternDataModel
     {
         public int PlateId { get; set; }
         public string Name { get; set; }

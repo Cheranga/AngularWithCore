@@ -25,7 +25,7 @@ namespace ASPCoreWithAngular.Models.VPlates
 
             var pattern = string.Join("|", characters.Select(x =>
             {
-                var charaterType = x.CharacterType == CharacterType.Character ? "C" : "N";
+                var charaterType = x.CharacterType == CharacterType.Letters ? "C" : "N";
 
                 return $"{charaterType} : {x.Include} : {x.Exclude}";
             }));

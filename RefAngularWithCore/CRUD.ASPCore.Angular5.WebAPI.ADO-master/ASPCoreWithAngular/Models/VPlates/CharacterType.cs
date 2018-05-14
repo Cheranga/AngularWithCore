@@ -2,7 +2,9 @@
 {
     public enum CharacterType
     {
-        Character,
-        Number
+        Letters,
+        Numbers,
+        Any,
+        Invalid
     }
 }

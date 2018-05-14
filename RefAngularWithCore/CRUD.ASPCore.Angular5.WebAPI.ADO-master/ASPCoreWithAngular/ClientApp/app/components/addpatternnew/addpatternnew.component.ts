@@ -8,6 +8,7 @@ import { PlateService } from "../../Services/plateservice.service";
 })
 
 export class AddPatternNewComponent {
+    private charId:number = 0;
     patternName: string = '';
     title: string = "Create";
     id: number;
@@ -16,7 +17,8 @@ export class AddPatternNewComponent {
     min: number;
     max: number;
     sub: any;
-    disableAdd:boolean = false;
+    disableAdd: boolean = false;
+    characterId:number = 0;
 
     characters: ICharacterData[] = [];
 
@@ -41,22 +43,30 @@ export class AddPatternNewComponent {
     addCharacter() {
         if (!this.disableAdd) {
             this.characters.push({
-                constraintType: 0,
-                characterType: 0,
+                id:++this.charId,
                 include: 'A-Z',
                 exclude: '',
-                numOccurences: 1
+                placedIn: 0,
+                minOccurences: 1,
+                maxOccurences: 1
             });
 
             this.disableAdd = this.characters.length >= this.max;
         }
     }
 
+    deleteAllCharacters() {
+        this.characters.splice(0, this.characters.length);
+        this.charId = 0;
+        this.disableAdd = false;
+    }
+
     deleteCharacter(character: ICharacterData) {
         if (character) {
             const index = this.characters.indexOf(character);
             if (index >= 0) {
-                this.characters.slice(index, 1);
+                this.characters.splice(index, 1);
+                this.disableAdd = false;
             }
         }
     }
@@ -73,7 +83,7 @@ export class AddPatternNewComponent {
     savePattern() {
         var platePatternData: INewPlatePatternPostData = {
             patternId: this.patternId,
-            patternName: this.patternName,
+            name: this.patternName,
             plateId: this.id,
             characters: this.characters
         };
@@ -86,16 +96,17 @@ export class AddPatternNewComponent {
 }
 
 interface ICharacterData {
-    constraintType: number;
-    characterType: number;
+    id:number;
     include: string;
     exclude: string;
-    numOccurences: number;
+    placedIn: number;
+    minOccurences: number;
+    maxOccurences: number;
 }
 
 interface INewPlatePatternPostData {
-    patternId: number;
-    patternName: string;
     plateId: number;
+    patternId: number;
+    name: string;
     characters: ICharacterData[];
 }

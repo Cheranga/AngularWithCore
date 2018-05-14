@@ -10,9 +10,10 @@ namespace ASPCoreWithAngular.Models.VPlates
 {
     public class PlatePatternRepository : IPlatePatternRepository
     {
-        const string ConnectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
+        //const string ConnectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
+        const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EmployeeDbDev;Integrated Security=True;";
 
-        public bool AddPlatePattern(PlaterPatternDataModel platePattern)
+        public bool AddPlatePattern(PlatePatternDataModel platePattern)
         {
             if (platePattern == null)
             {
@@ -62,21 +63,21 @@ namespace ASPCoreWithAngular.Models.VPlates
             return false;
         }
 
-        public IEnumerable<PlaterPatternDataModel> GetPlatePatterns(int plateId)
+        public IEnumerable<PlatePatternDataModel> GetPlatePatterns(int plateId)
         {
             if (plateId <= 0)
             {
-                return Enumerable.Empty<PlaterPatternDataModel>();
+                return Enumerable.Empty<PlatePatternDataModel>();
             }
 
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var patterns = connection.Query<PlaterPatternDataModel>($"select * from PlatePattern where [PlateId]={plateId}");
+                var patterns = connection.Query<PlatePatternDataModel>($"select * from PlatePattern where [PlateId]={plateId}");
                 return patterns;
             }
         }
 
-        public PlaterPatternDataModel GetPlatePattern(int plateId, int platePatternId)
+        public PlatePatternDataModel GetPlatePattern(int plateId, int platePatternId)
         {
             if (plateId <= 0 || platePatternId <= 0)
             {
@@ -85,7 +86,7 @@ namespace ASPCoreWithAngular.Models.VPlates
 
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var pattern = connection.QueryFirst<PlaterPatternDataModel>("spGetPlatePattern", new { id = platePatternId, plateId = plateId });
+                var pattern = connection.QueryFirst<PlatePatternDataModel>("spGetPlatePattern", new { id = platePatternId, plateId = plateId });
                 return pattern;
             }
 

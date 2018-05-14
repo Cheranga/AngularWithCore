@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPCoreWithAngular.Dto.PlatePattern;
+using ASPCoreWithAngular.Mappers;
 using ASPCoreWithAngular.Models.VPlates;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -44,7 +46,7 @@ namespace ASPCoreWithAngular.Controllers
                 return NotFound();
             }
 
-            var currentPatterns = new List<PlaterPatternDataModel>(_platePatternRepository.GetPlatePatterns(id));
+            var currentPatterns = new List<PlatePatternDataModel>(_platePatternRepository.GetPlatePatterns(id));
 
             var platePatterns = new
             {
@@ -72,7 +74,7 @@ namespace ASPCoreWithAngular.Controllers
         }
 
         [HttpPost("patterns/create")]
-        public IActionResult CreatePlatePattern([FromBody] PlatePattern platePattern)
+        public IActionResult CreatePlatePattern([FromBody] CreatePlatePattern platePattern)
         {
             if (ModelState.IsValid)
             {
@@ -81,12 +83,7 @@ namespace ASPCoreWithAngular.Controllers
                     return BadRequest();
                 }
 
-                var platePatternDataModel = new PlaterPatternDataModel
-                {
-                    PlateId = platePattern.PlateId,
-                    Name = platePattern.Name,
-                    Pattern = platePattern.GetFormat()
-                };
+                var platePatternDataModel = new CreatePlatePatternToDataModelMapper().Map(platePattern);
 
                 var status = _platePatternRepository.AddPlatePattern(platePatternDataModel);
                 return Ok(status);
