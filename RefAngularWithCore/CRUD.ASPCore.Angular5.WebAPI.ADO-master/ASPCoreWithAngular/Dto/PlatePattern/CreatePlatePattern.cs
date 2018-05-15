@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ASPCoreWithAngular.Dto.Common;
+using ASPCoreWithAngular.Models.VPlates;
 
 namespace ASPCoreWithAngular.Dto.PlatePattern
 {
@@ -19,9 +20,9 @@ namespace ASPCoreWithAngular.Dto.PlatePattern
 
     public class CreateCharacter
     {
+        public FlowType FlowType { get; set; }
         public string Include { get; set; }
         public string Exclude { get; set; }
-        public PlacedIn PlacedIn { get; set; }
         public int MinOccurences { get; set; }
         public int MaxOccurences { get; set; }
 

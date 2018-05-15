@@ -42,13 +42,11 @@ export class AddPatternNewComponent {
 
     addCharacter() {
         if (!this.disableAdd) {
-            let newCharacter = new CharacterData();
+            const newCharacter = new CharacterData();
             newCharacter.id = ++this.charId;
             newCharacter.include = 'A-Z';
             newCharacter.exclude = '';
             newCharacter.placedIn = 0;
-            newCharacter.minOccurences = 1;
-            newCharacter.maxOccurences = 1;
 
 
             this.characters.push(newCharacter);
@@ -84,9 +82,9 @@ export class AddPatternNewComponent {
 
     savePattern() {
         var platePatternData: INewPlatePatternPostData = {
+            plateId: this.id,
             patternId: this.patternId,
             name: this.patternName,
-            plateId: this.id,
             characters: this.characters
         };
 
@@ -104,8 +102,8 @@ class CharacterData {
     flowType:FlowType = FlowType.Contains;
     include: string;
     exclude: string;
-    minOccurences: number;
-    maxOccurences: number;
+    minOccurences?: number;
+    maxOccurences?: number;
 
     private _placedIn: number;
     private _isDisabled: boolean = true;
@@ -129,6 +127,8 @@ enum FlowType {
     StartsWithPattern,
     Contains,
     ContainsPattern,
+    ThenHas,
+    ThenHasPattern,
     EndsWith,
     EndsWithPattern
 }

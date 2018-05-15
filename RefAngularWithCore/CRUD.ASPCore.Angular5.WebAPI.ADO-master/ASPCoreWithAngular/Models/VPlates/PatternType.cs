@@ -6,6 +6,8 @@
         StartsWithPattern,
         Contains,
         ContainsPattern,
+        ThenHas,
+        ThenHasPattern,
         EndsWith,
         EndsWithPattern
     }
