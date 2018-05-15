@@ -30,15 +30,49 @@ namespace ASPCoreWithAngular.Dto.PlatePattern
         {
             var messagePattern = @"{0} {1} {2} {3} {4}";
 
-            var flowTypeText = FlowType.ToString();
-            var includeText = $"including {Include}";
-            var excludeText = string.IsNullOrEmpty(Exclude) ? string.Empty : $"but excluding {Exclude}";
-            var minText = MinOccurences.HasValue ? $"with a minimum of {MinOccurences}" : string.Empty;
-            var maxText = MaxOccurences.HasValue && !string.IsNullOrEmpty(minText) ? $"and a maximum of {MaxOccurences} occurences" : $"with a maximum of {MaxOccurences}";
-            
+            var flowTypeText = GetFlowTypeDisplay(FlowType);
+            var includeText = $"'{Include}'";
+            var excludeText = string.IsNullOrEmpty(Exclude) ? string.Empty : $"but excluding '{Exclude}'";
+            var minText = string.Empty;
+            var maxText = string.Empty;
+            if (MinOccurences.HasValue && MaxOccurences.HasValue)
+            {
+                minText = $"with a minimum of {MinOccurences}";
+                maxText = $"and maximum of {MaxOccurences} occurences";
+            }
+            else if (MinOccurences.HasValue)
+            {
+                minText = $"with a minimum of {MinOccurences} occurences";
+            }
+            else if (MaxOccurences.HasValue)
+            {
+                maxText = $"with a maximum of {MaxOccurences} occurences";
+            }
+
             var message = string.Format(messagePattern, flowTypeText, includeText, excludeText, minText, maxText);
 
             return message;
+        }
+
+        public string GetFlowTypeDisplay(FlowType flowType)
+        {
+            switch (flowType)
+            {
+                case FlowType.StartsWith:
+                    return "Starts with";
+                case FlowType.StartsWithPattern:
+                    return "Starts with pattern";
+                case FlowType.Contains:
+                    return "Contains";
+                case FlowType.ContainsPattern:
+                    return "Contains pattern";
+                case FlowType.EndsWith:
+                    return "Ends with";
+                case FlowType.EndsWithPattern:
+                    return "Ends with pattern";
+                default:
+                    return "Contains";
+            }
         }
 
     }

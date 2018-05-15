@@ -46,7 +46,7 @@ namespace ASPCoreWithAngular.Mappers
                 PlateId = source.PlateId,
                 Name = source.Name,
                 Pattern = pattern,
-                PatternDisplay = string.Join("and ", source.Characters.Select(x=>x.GetDisplay()))
+                PatternDisplay = string.Join(Environment.NewLine, source.Characters.Select(x=>x.GetDisplay()))
             };
         }
        

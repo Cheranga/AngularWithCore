@@ -54,7 +54,7 @@ namespace ASPCoreWithAngular.Controllers
                 currentPlate.Name,
                 currentPlate.MinCharacters,
                 currentPlate.MaxCharacters,
-                Patterns = currentPatterns.Select(y => new { y.Name, y.Pattern })
+                Patterns = currentPatterns.Select(y => new { y.Id, y.Name, Pattern = y.PatternDisplay })
             };
 
             return Ok(platePatterns);

@@ -10,8 +10,8 @@ namespace ASPCoreWithAngular.Models.VPlates
 {
     public class PlatePatternRepository : IPlatePatternRepository
     {
-        //const string ConnectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
-        const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EmployeeDbDev;Integrated Security=True;";
+        const string ConnectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
+        //const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EmployeeDbDev;Integrated Security=True;";
 
         public bool AddPlatePattern(PlatePatternDataModel platePattern)
         {
@@ -24,7 +24,15 @@ namespace ASPCoreWithAngular.Models.VPlates
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    connection.Execute("spAddPlatePattern", platePattern, commandType: CommandType.StoredProcedure);
+                    connection.Execute("spAddPlatePattern",
+                        new
+                        {
+                            platePattern.PlateId,
+                            platePattern.Name,
+                            platePattern.Pattern,
+                            platePattern.PatternDisplay
+                        }
+                        , commandType: CommandType.StoredProcedure);
                 }
 
                 return true;

@@ -34,6 +34,7 @@ interface IPlateDetailData {
 }
 
 interface IPlaterPatternDisplayData {
+    id:number;
     name: string;
     pattern: string;
 }
