@@ -20,7 +20,7 @@ export class AddPatternNewComponent {
     disableAdd: boolean = false;
     characterId:number = 0;
 
-    characters: ICharacterData[] = [];
+    characters: CharacterData[] = [];
 
     constructor(private _avRoute: ActivatedRoute, private _plateService: PlateService, private _router: Router) {
         if (this._avRoute.snapshot.params["id"]) {
@@ -42,14 +42,16 @@ export class AddPatternNewComponent {
 
     addCharacter() {
         if (!this.disableAdd) {
-            this.characters.push({
-                id:++this.charId,
-                include: 'A-Z',
-                exclude: '',
-                placedIn: 0,
-                minOccurences: 1,
-                maxOccurences: 1
-            });
+            let newCharacter = new CharacterData();
+            newCharacter.id = ++this.charId;
+            newCharacter.include = 'A-Z';
+            newCharacter.exclude = '';
+            newCharacter.placedIn = 0;
+            newCharacter.minOccurences = 1;
+            newCharacter.maxOccurences = 1;
+
+
+            this.characters.push(newCharacter);
 
             this.disableAdd = this.characters.length >= this.max;
         }
@@ -61,7 +63,7 @@ export class AddPatternNewComponent {
         this.disableAdd = false;
     }
 
-    deleteCharacter(character: ICharacterData) {
+    deleteCharacter(character: CharacterData) {
         if (character) {
             const index = this.characters.indexOf(character);
             if (index >= 0) {
@@ -71,7 +73,7 @@ export class AddPatternNewComponent {
         }
     }
 
-    saveCharacter(character: ICharacterData) {
+    saveCharacter(character: CharacterData) {
         if (!this.disableAdd && character) {
             this.characters.push(character);
             if (this.characters.length >= this.max) {
@@ -95,18 +97,46 @@ export class AddPatternNewComponent {
     }
 }
 
-interface ICharacterData {
-    id:number;
+
+
+class CharacterData {
+    id: number;
+    flowType:FlowType = FlowType.Contains;
     include: string;
     exclude: string;
-    placedIn: number;
     minOccurences: number;
     maxOccurences: number;
+
+    private _placedIn: number;
+    private _isDisabled: boolean = true;
+
+    get placedIn(): number {
+        return this._placedIn;
+    }
+
+    set placedIn(newValue: number) {
+        this._placedIn = newValue;
+        this._isDisabled = this._placedIn == 0;
+    }
+
+    get isDisabled():boolean {
+        return this._isDisabled;
+    }
 }
+
+enum FlowType {
+    StartsWith,
+    StartsWithPattern,
+    Contains,
+    ContainsPattern,
+    EndsWith,
+    EndsWithPattern
+}
+
 
 interface INewPlatePatternPostData {
     plateId: number;
     patternId: number;
     name: string;
-    characters: ICharacterData[];
+    characters: CharacterData[];
 }
