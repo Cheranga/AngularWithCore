@@ -8,11 +8,6 @@ using ASPCoreWithAngular.Models.VPlates;
 
 namespace ASPCoreWithAngular.Mappers
 {
-    public abstract class DataMapper<TSource, TTarget> where TSource : class where TTarget : class
-    {
-        public abstract TTarget Map(TSource source);
-    }
-
     public class CreatePlatePatternToDataModelMapper : DataMapper<CreatePlatePattern, PlatePatternDataModel>
     {
         public override PlatePatternDataModel Map(CreatePlatePattern source)
@@ -50,7 +45,8 @@ namespace ASPCoreWithAngular.Mappers
             {
                 PlateId = source.PlateId,
                 Name = source.Name,
-                Pattern = pattern
+                Pattern = pattern,
+                PatternDisplay = string.Join("and ", source.Characters.Select(x=>x.GetDisplay()))
             };
         }
        
