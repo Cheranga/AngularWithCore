@@ -9,13 +9,14 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { FetchEmployeeComponent } from './components/fetchemployee/fetchemployee.component'
-import { createemployee } from './components/addemployee/AddEmployee.component'
+//import { FetchEmployeeComponent } from './components/fetchemployee/fetchemployee.component'
+//import { createemployee } from './components/addemployee/AddEmployee.component'
 import { PlateListComponent } from "./components/platelist/platelist.component"
 import { AddPlateComponent } from "./components/addplate/addplate.component"
 import { PlateDetailComponent } from "./components/platedetail/platedetail.component"
-import { AddPatternComponent } from "./components/addpattern/addpattern.component"
-import { AddPatternNewComponent } from "./components/addpatternnew/addpatternnew.component"
+import {AddPlatePatternComponent} from "./components/addplatepattern/addplatepattern.component";
+//import { AddPatternComponent } from "./components/addpattern/addpattern.component"
+//import { AddPlatePatternComponent } from "./components/addplatepattern/addplaterpattern.component";
 
 import { UppercaseDirective } from "./directives/uppercase.directive";
 
@@ -24,13 +25,12 @@ import { UppercaseDirective } from "./directives/uppercase.directive";
         AppComponent,
         NavMenuComponent,
         HomeComponent,
-        FetchEmployeeComponent,
-        createemployee,
+        //FetchEmployeeComponent,
+        //createemployee,
         PlateListComponent,
         AddPlateComponent,
         PlateDetailComponent,
-        AddPatternComponent,
-        AddPatternNewComponent,
+        AddPlatePatternComponent,
         UppercaseDirective
     ],
     imports: [
@@ -41,14 +41,14 @@ import { UppercaseDirective } from "./directives/uppercase.directive";
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'fetch-employee', component: FetchEmployeeComponent },
-            { path: 'register-employee', component: createemployee },
-            { path: 'employee/edit/:id', component: createemployee },
+            //{ path: 'fetch-employee', component: FetchEmployeeComponent },
+            //{ path: 'register-employee', component: createemployee },
+            //{ path: 'employee/edit/:id', component: createemployee },
             { path: 'plate-list', component: PlateListComponent },
             { path: 'addplate', component: AddPlateComponent },
             { path: 'plate/patterns/:id', component: PlateDetailComponent },
-            { path: 'patterns/:id/:patternId', component: AddPatternComponent },
-            { path: 'newpatterns/:id/:patternId', component: AddPatternNewComponent },
+            //{ path: 'patterns/:id/:patternId', component: AddPatternComponent },
+            { path: 'patterns/:id/:patternId', component: AddPlatePatternComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],

@@ -1,14 +1,17 @@
 ﻿import { Component} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PlateService } from "../../Services/plateservice.service";
-import {UppercaseDirective} from "../../directives/uppercase.directive";
+import { UppercaseDirective } from "../../directives/uppercase.directive";
+import {CharacterData} from "../../models/characterdata";
+import { INewPlatePatternPostData} from "../../interfaces/inewplatepatternpostdata";
+
 
 @Component({
-    selector: 'addpatternnew',
-    templateUrl: './addpatternnew.component.html'
+    selector: 'addplatepattern',
+    templateUrl: './addplatepattern.component.html'
 })
 
-export class AddPatternNewComponent {
+export class AddPlatePatternComponent {
     private charId:number = 0;
     patternName: string = '';
     title: string = "Create";
@@ -98,44 +101,8 @@ export class AddPatternNewComponent {
 
 
 
-class CharacterData {
-    id: number;
-    flowType:FlowType = FlowType.Contains;
-    include: string;
-    exclude: string;
-    minOccurences?: number;
-    maxOccurences?: number;
-
-    private _placedIn: number;
-    private _isDisabled: boolean = true;
-
-    get placedIn(): number {
-        return this._placedIn;
-    }
-
-    set placedIn(newValue: number) {
-        this._placedIn = newValue;
-        this._isDisabled = this._placedIn == 0;
-    }
-
-    get isDisabled():boolean {
-        return this._isDisabled;
-    }
-}
-
-enum FlowType {
-    StartsWith,
-    StartsWithPattern,
-    Contains,
-    ContainsPattern,
-    EndsWith,
-    EndsWithPattern
-}
 
 
-interface INewPlatePatternPostData {
-    plateId: number;
-    patternId: number;
-    name: string;
-    characters: CharacterData[];
-}
+
+
+
