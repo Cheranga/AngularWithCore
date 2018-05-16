@@ -7,7 +7,7 @@
         <form (ngSubmit)="savePattern()" #formDir="ngForm" novalidate>
             <div class="form-group">
                 <label for="patternName">Name</label>
-                <input class="form-control" type="text" [(ngModel)]="patternName" name="patternName">
+                <input class="form-control" type="text" [(uppercase)]="patternName" name="patternName">
             </div>
 
             <div>
@@ -50,14 +50,14 @@
                         <td class="col-sm-2">
                             <div class="form-group">
                                 <div>
-                                    <input class="form-control" type="text" [(ngModel)]="character.include" name="{{character.id}}include">
+                                    <input class="form-control" type="text" [(uppercase)]="character.include" name="{{character.id}}include">
                                 </div>
                             </div>
                         </td>
                         <td class="col-sm-2">
                             <div class="form-group">
                                 <div>
-                                    <input class="form-control" type="text" [(ngModel)]="character.exclude" name="{{character.id}}exclude">
+                                    <input class="form-control" type="text" [(uppercase)]="character.exclude" name="{{character.id}}exclude">
                                 </div>
                             </div>
                         </td>

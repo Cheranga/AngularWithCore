@@ -1,6 +1,7 @@
 ﻿import { Component} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PlateService } from "../../Services/plateservice.service";
+import {UppercaseDirective} from "../../directives/uppercase.directive";
 
 @Component({
     selector: 'addpatternnew',

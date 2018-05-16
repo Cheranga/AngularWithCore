@@ -17,7 +17,7 @@ import { PlateDetailComponent } from "./components/platedetail/platedetail.compo
 import { AddPatternComponent } from "./components/addpattern/addpattern.component"
 import { AddPatternNewComponent } from "./components/addpatternnew/addpatternnew.component"
 
-
+import { UppercaseDirective } from "./directives/uppercase.directive";
 
 @NgModule({
     declarations: [
@@ -30,7 +30,8 @@ import { AddPatternNewComponent } from "./components/addpatternnew/addpatternnew
         AddPlateComponent,
         PlateDetailComponent,
         AddPatternComponent,
-        AddPatternNewComponent
+        AddPatternNewComponent,
+        UppercaseDirective
     ],
     imports: [
         CommonModule,
@@ -50,6 +51,9 @@ import { AddPatternNewComponent } from "./components/addpatternnew/addpatternnew
             { path: 'newpatterns/:id/:patternId', component: AddPatternNewComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    exports: [
+        UppercaseDirective
     ],
     providers: [
         EmployeeService,
