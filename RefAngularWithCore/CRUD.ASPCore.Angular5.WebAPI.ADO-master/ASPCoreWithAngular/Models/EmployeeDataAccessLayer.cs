@@ -11,7 +11,7 @@ namespace ASPCoreWithAngular.Models
     public class EmployeeDataAccessLayer
     {
         
-        string connectionString = @"Data Source =.\; Initial Catalog = EmployeeDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
+        string connectionString = @"Data Source =.\; Initial Catalog = PlateManagerDbDev; Integrated Security = False; User ID = sc9; Password=sc9Password;";
 
         //To View all employees details
         public IEnumerable<Employee> GetAllEmployees()

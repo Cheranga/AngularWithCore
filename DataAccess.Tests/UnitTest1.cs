@@ -34,10 +34,7 @@ namespace DataAccess.Tests
         [Fact]
         public void UpdateEmployee()
         {
-            var employee = new Employee
-            {
-
-            }
+           
         }
 
     }

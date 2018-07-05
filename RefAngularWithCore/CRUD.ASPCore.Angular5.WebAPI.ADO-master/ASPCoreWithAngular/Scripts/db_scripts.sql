@@ -1,4 +1,4 @@
-﻿USE [EmployeeDbDev]
+﻿USE [PlateManagerDbDev]
 GO
 /****** Object:  Table [dbo].[Plate]    Script Date: 14/05/2018 5:52:47 AM ******/
 SET ANSI_NULLS ON
